@@ -6,18 +6,19 @@ import {
   createBottomTabNavigator,
   BottomTabBarProps,
 } from "@react-navigation/bottom-tabs";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 
 import Home from "../TabScreens/Home";
 import Explore from "../TabScreens/Explore";
 
 import colors from "../assets/colors";
+import AddHabit from "../TabScreens/AddHabit";
 
 type TabParamList = {
   Home: undefined;
   Explore: undefined;
   Stats: undefined;
-  Wallet: undefined;
+  Add: undefined;
   Settings: undefined;
 };
 
@@ -84,10 +85,10 @@ function MyTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
                   color={isFocused ? colors.blue : colors.grey}
                 />
               );
-            case "Wallet":
+            case "Add":
               return (
-                <Ionicons
-                  name="wallet-outline"
+                <AntDesign
+                  name="pluscircleo"
                   size={20}
                   color={isFocused ? colors.blue : colors.grey}
                 />
@@ -142,6 +143,7 @@ function MyTabs() {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Explore" component={Explore} />
+      <Tab.Screen name="Add" component={AddHabit} />
       {/* <Tab.Screen name="Stats" component={Stats} />
       <Tab.Screen name="Wallet" component={Wallet} />
       <Tab.Screen name="Settings" component={Settings} /> */}

@@ -16,6 +16,7 @@
     "react": "18.3.1",
     "react-native": "0.76.9",
     "react-native-safe-area-context": "^5.3.0",
+    "react-native-simple-dropdown-select": "^0.1.0",
     "react-navigation": "^5.0.0"
   },
   "devDependencies": {
