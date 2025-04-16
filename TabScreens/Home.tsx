@@ -45,7 +45,7 @@ const Home = () => {
         />
         <View>
           <Text style={{ fontWeight: 600 }}>Hello ✋</Text>
-          <Text style={{}}>Mbuthi Mungai</Text>
+          <Text style={{}}>John Doe</Text>
         </View>
         <Ionicons name="notifications-outline" size={24} />
       </View>

@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface HabitState {
-  name: string;
-  category: string;
-  suggestedTime: string;
-  reminderEnabled: boolean;
+  name?: string;
+  category?: string;
+  suggestedTime?: string;
+  reminder?: boolean;
+  goalType?: string;
 }
 
 const initialState: HabitState[] = [];
@@ -12,10 +13,10 @@ const habitSlice = createSlice({
   name: "habit",
   initialState,
   reducers: {
-    add_habit: (state, action) => {
+    add_habit: (state, action: PayloadAction<HabitState>) => {
       state.push(action.payload);
     },
-    delete_habit: (state, action) => {
+    delete_habit: (state, action: PayloadAction<HabitState>) => {
       state = state.filter((habit) => habit.name !== action.payload.name);
       return state;
     },
