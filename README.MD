@@ -34,11 +34,12 @@ Mobile app that enables users to track, manage, and organize their habits.
 
 ---
 
----
-
 ### **Build Tools**
 
 **Metro Bundler** – React Native’s development bundler.  
 **ESLint & Prettier** – ensure code quality and formatting consistency.
 
 ---
+
+![Home Screen](https://drive.google.com/uc?export=view&id=1HQYz34co09QLSX6G1POHIKsK1lXVbRtJ)
+![Add Habit Screen](https://drive.google.com/uc?export=view&id=1NAZQOXuPW664gmhtn_3Nz_kRRemo9E9J)
