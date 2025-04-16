@@ -1,20 +1,18 @@
-import React, { ReactNode, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  Text,
-  ScrollView,
-  Dimensions,
-} from "react-native";
+import React, { ReactNode, useEffect, useState } from "react";
+import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
+import { useSelector, useDispatch } from "react-redux";
+import { habits } from "../state/habit/habitSelector";
 import colors from "../assets/colors";
 import Card from "../components/Card";
 import data from "../utils/data";
+import { delete_habit } from "../state/habit/habitSlice";
 
-const { width } = Dimensions.get("window");
 const Home = () => {
+  const dispatch = useDispatch();
+  const userHabits = useSelector(habits);
+
   const [checkedItems, setCheckedItems] = useState<boolean[]>(
     new Array(data.length).fill(false)
   );
@@ -24,6 +22,9 @@ const Home = () => {
       newChecked[index] = !newChecked[index];
       return newChecked;
     });
+  };
+  const handleDelete = (index: number) => {
+    dispatch(delete_habit({ name: data[index].name }));
   };
 
   return (
@@ -43,7 +44,7 @@ const Home = () => {
         <Ionicons name="notifications-outline" size={24} />
       </View>
       <ScrollView style={styles.scrollView}>
-        {data.map<ReactNode>((value, index) => {
+        {userHabits.map<ReactNode>((value, index) => {
           return (
             <Card key={index} style={styles.card}>
               <View style={styles.cardHeader}>
