@@ -14,18 +14,24 @@ const Home = () => {
   const userHabits = useSelector(habits);
 
   const [checkedItems, setCheckedItems] = useState<boolean[]>(
-    new Array(data.length).fill(false)
+    new Array(userHabits.length).fill(false)
   );
   const handleCheck = (index: number) => {
+    const habit = userHabits[index];
+    if (!habit) return;
+
     setCheckedItems((prev) => {
       const newChecked = [...prev];
-      newChecked[index] = !newChecked[index];
+      newChecked[index] = true;
       return newChecked;
     });
+
+    dispatch(delete_habit({ name: habit.name }));
   };
-  const handleDelete = (index: number) => {
-    dispatch(delete_habit({ name: data[index].name }));
-  };
+
+  useEffect(() => {
+    setCheckedItems(new Array(userHabits.length).fill(false));
+  }, [userHabits]);
 
   return (
     <View style={styles.container}>
