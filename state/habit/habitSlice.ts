@@ -6,14 +6,7 @@ interface HabitState {
   reminderEnabled: boolean;
 }
 
-const initialState: HabitState[] = [
-  {
-    name: "",
-    category: "",
-    suggestedTime: "",
-    reminderEnabled: false,
-  },
-];
+const initialState: HabitState[] = [];
 
 const habitSlice = createSlice({
   name: "habit",

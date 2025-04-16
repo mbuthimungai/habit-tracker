@@ -1,17 +1,30 @@
 import React, { ReactNode } from "react";
-import { StyleSheet, View, Text, StyleProp, ViewStyle } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  StyleProp,
+  ViewStyle,
+  TouchableOpacity,
+} from "react-native";
 import colors from "../assets/colors";
 
 type AppButtonProps = {
   children?: ReactNode;
   style?: StyleProp<ViewStyle>;
   text: string;
+  handleSubmit: () => void;
 };
-const AppButton: React.FC<AppButtonProps> = ({ style, children, text }) => {
+const AppButton: React.FC<AppButtonProps> = ({
+  style,
+  children,
+  text,
+  handleSubmit,
+}) => {
   return (
-    <View style={[styles.btn, style]}>
+    <TouchableOpacity style={[styles.btn, style]} onPress={handleSubmit}>
       <Text style={styles.btnText}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

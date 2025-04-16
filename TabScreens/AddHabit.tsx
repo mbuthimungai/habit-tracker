@@ -4,10 +4,13 @@ import { DropDownSelect } from "react-native-simple-dropdown-select";
 import Checkbox from "expo-checkbox";
 import colors from "../assets/colors";
 import AppButton from "../components/AppButton";
+import { useDispatch } from "react-redux";
+import { add_habit } from "../state/habit/habitSlice";
 
 const { width } = Dimensions.get("screen");
 
 const AddHabit = () => {
+  const dispatch = useDispatch();
   interface DropDownItem {
     readonly id: number;
     name: string;
@@ -118,7 +121,21 @@ const AddHabit = () => {
           />
         </View>
         <View style={{ height: 40 }}></View>
-        <AppButton style={{ width: width * 0.9 }} text="Submit" />
+        <AppButton
+          style={{ width: width * 0.9 }}
+          text="Submit"
+          handleSubmit={() => {
+            dispatch(
+              add_habit({
+                name: name,
+                category: value?.name,
+                goalType: goalType?.name,
+                suggestedTime: suggestedTime?.name,
+                reminder: reminder,
+              })
+            );
+          }}
+        />
       </View>
     </View>
   );
